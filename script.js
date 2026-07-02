@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtitle = document.getElementById('subtitle');
     const proposalScreen = document.getElementById('proposalScreen');
     const successScreen = document.getElementById('successScreen');
-    
+
     let dodgeCount = 0;
     let yesScale = 1;
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Get viewport dimensions
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-        
+
         // Get button dimensions
         const btnRect = noBtn.getBoundingClientRect();
         const btnWidth = btnRect.width;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     noBtn.addEventListener('touchstart', (e) => {
         e.preventDefault();
         moveNoButton();
-    }, {passive: false});
+    }, { passive: false });
 
     // Event listener for the Yes button
     yesBtn.addEventListener('click', () => {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.random() * (max - min) + min;
         }
 
-        const interval = setInterval(function() {
+        const interval = setInterval(function () {
             const timeLeft = animationEnd - Date.now();
 
             if (timeLeft <= 0) {
@@ -104,22 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const particleCount = 50 * (timeLeft / duration);
-            
+
             // Confetti from two sides
-            confetti(Object.assign({}, defaults, { 
-                particleCount, 
-                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } 
+            confetti(Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
             }));
-            confetti(Object.assign({}, defaults, { 
-                particleCount, 
-                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } 
+            confetti(Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
             }));
         }, 250);
 
         // Hide proposal, show success
         proposalScreen.classList.add('hidden');
         successScreen.classList.remove('hidden');
-        
+
         // Add entry animation to success screen
         successScreen.classList.add('card-enter');
     });
